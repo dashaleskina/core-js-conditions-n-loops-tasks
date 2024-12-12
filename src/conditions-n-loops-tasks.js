@@ -246,8 +246,26 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let findIndex = 0;
+  let firstPart = '';
+  let secondPart = '';
+  if (str.length % 2 !== 0) {
+    findIndex = Math.floor(str.length / 2);
+    for (let j = str.length - 1; j > findIndex; j -= 1) {
+      secondPart += str[j];
+    }
+  } else {
+    findIndex = Math.ceil(str.length / 2);
+    for (let j = str.length - 1; j > findIndex - 1; j -= 1) {
+      secondPart += str[j];
+    }
+  }
+
+  for (let i = 0; i < findIndex; i += 1) {
+    firstPart += str[i];
+  }
+  return firstPart === secondPart;
 }
 
 /**
